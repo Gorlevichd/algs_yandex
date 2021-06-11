@@ -1,0 +1,96 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[a4paper, total={6in, 10in}]{geometry}
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian, english]{babel}
+\usepackage{statmath}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{dcolumn}
+\usepackage[parfill]{parskip}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+\usepackage{listings}
+\lstset{extendedchars=\true}
+
+\title{Алгоритмы}
+
+\begin{document}
+
+\maketitle
+
+\section{Сложность, тестирования и особые случаи}
+
+\subsection{Сложность алгоритма}
+
+\textbf{Сложность алгоритма} - порядок количества действий, 
+которые выполняет алгоритм
+
+\begin{enumerate}
+    \item Константы не включаются в O(N)
+    \item Асимтотически константы не влияют на скорость
+    работы алгоритма при больших параметрах
+    \item \textit{Пространственная сложность} - количество использованной
+    памяти
+    \item Требуется решение с наименьшей асимптотической сложностью
+\end{enumerate}
+
+\subsubsection{Задача UTF-8}
+
+\underline{Задача:} 
+
+Дана строка в кодировке UTF-8, найти
+самый частый символ.
+
+\underline{Решение $\#1$:}
+
+\begin{enumerate}
+    \item Внешний цикл перебирает все позиции
+    \item Внутренний цикл для каждой позиции перебирает
+    все другие символы и считает совпадения
+    \item $O(N^{2})$, память: $O(N)$
+\end{enumerate}
+
+\underline{Решение $\#2$}
+
+\begin{enumerate}
+    \item Перебираем все символы в строке и
+    находим уникальные буквы
+    \item Потом перебираем уже уникальные буквы а не все
+    \item $O(kN) \sim O(N)$, память: $O(N + K)$
+\end{enumerate}
+
+\underline{Решение $\#3$:}
+
+\begin{enumerate}
+    \item Создаем словарь, ключ - символ, а значение
+    - сколько раз он встречался
+    \item Если символ встречается впервые, то инициализируем нулем
+    \item Прибавляем к элементу словаря с ключом, совпадающем
+    с этим символом, единицы
+    \item $O(N + k)$, память: $O(K)$
+\end{enumerate}
+
+\subsection{Тестирование}
+
+Что нужно тестировать:
+
+\begin{enumerate}
+    \item Тесты из условия (если есть)
+    \item Общие случаи
+    \item Особые случаи
+\end{enumerate}
+
+Советы по составлению тестов:
+
+\begin{enumerate}
+    \item Если есть примеры - решить руками и сверить ответ
+    \item Проверить последовательность из одного элемента
+    и пустую последовательность
+    \item "Краевые эффекты" - проверить, что программа работает
+    корректно в начале и в конце последовательности
+\end{enumerate}
+\end{document}
